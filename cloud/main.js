@@ -69,7 +69,7 @@ if (request.object.get('pushed') === false) {
     var query = new Parse.Query(Parse.Installation);
     query.equalTo('user', request.object.get('toId'));  // push to the right user!!!
     var partner = request.object.get('toId');
-    var userQuery = new Parse.Query(Parse.User);
+    var userQuery = new Parse.Query(request.user);
     var soundFile = 'default'
     userQuery.get(partner).then (function(partnerUser) {
        soundFile = partnerUser.get("soundFile") + '.caf';
@@ -147,7 +147,7 @@ Parse.Cloud.define("unpair", function(request, response) {
     var partnerUser;
     var currentUsersPartnerId = currentUser.get("partnerId");
     console.log(currentUsersPartnerId);
-    var userQuery = new Parse.Query(Parse.User);
+    var userQuery = new Parse.Query(request.user);
     userQuery.get(currentUsersPartnerId).then(function(user) {
        partnerUser = user;
         partnerUser.set("partnerId", "");
@@ -176,7 +176,7 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
   var html4 = inviteHTML.HTMLpart4();
   var newPairing = request.object;
   // First Send the email to the invited partner
-  var userQuery = new Parse.Query(Parse.User);
+  var userQuery = new Parse.Query(request.user);
   userQuery.get(newPairing.get("fromUserId")).then(function(user) {
     client.sendEmail({
       to: newPairing.get("toUserEmail"),
@@ -242,7 +242,7 @@ Parse.Cloud.define("sendPoints", function(request,response) {
   var partnerUser;
   var currentUsersPartnerId = currentUser.get("partnerId");
   console.log(currentUsersPartnerId);
-  var userQuery = new Parse.Query(Parse.User);
+  var userQuery = new Parse.Query(request.user);
   userQuery.get(currentUsersPartnerId).then(function(user) {
      partnerUser = user;
      var startingPoints = partnerUser.get("points");
