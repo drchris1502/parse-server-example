@@ -55,7 +55,7 @@ return promise;
 Parse.Cloud.define("hello", function(request, response) {
   send("Ydzt0n3KSr", "pst.caf", "Hello World", false).then(
      function(object) {
-     	response.success("Hello world!");
+     	response.success("Hello Chris!");
      }, function(error) {
        console.log(error);
        response.success("Error");
