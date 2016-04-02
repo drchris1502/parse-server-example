@@ -167,9 +167,9 @@ Parse.Cloud.define("unpair", function(request, response) {
 });
 
 Parse.Cloud.beforeSave("Pairing", function(request,response) {
-  var client = require('cloud/myMailModule-1.0.0.js');
+  var client = require('/app/cloud/myMailModule-1.0.0.js');
   client.initialize('whispers-app.com', 'key-1c722948f02cedebe15f2f827c57961f');
-  var inviteHTML = require('cloud/invitationHTML.js');
+  var inviteHTML = require('/app/cloud/invitationHTML.js');
   var html1 = inviteHTML.HTMLpart1();
   var html2 = inviteHTML.HTMLpart2();
   var html3 = inviteHTML.HTMLpart3();
@@ -219,7 +219,7 @@ Parse.Cloud.define("welcomeEmail", function(request, response) {
   var client = require('cloud/myMailModule-1.0.0.js');
   client.initialize('whispers-app.com', 'key-1c722948f02cedebe15f2f827c57961f');
   var email = request.params.email;
-  var welcomeHTML = require('cloud/welcomeHTML.js');
+  var welcomeHTML = require('/app/cloud/welcomeHTML.js');
   var html = welcomeHTML.emailHTML();
   client.sendEmail({
     to: email,
