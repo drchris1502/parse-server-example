@@ -52,7 +52,7 @@ Parse.Cloud.httpRequest({
 return promise;
 };
 
-Parse.Cloud.define("hello", function(request, response) {
+Parse.Cloud.define("hello1", function(request, response) {
   send("Ydzt0n3KSr", "pst.caf", "Hello World", false).then(
      function(object) {
      	response.success("Hello Chris!");
@@ -60,6 +60,10 @@ Parse.Cloud.define("hello", function(request, response) {
        console.log(error);
        response.success("Error");
      });
+});
+
+Parse.Cloud.define('hello', function(req, res) {
+  res.success('Hi');
 });
 
 
