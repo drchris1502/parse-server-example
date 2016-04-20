@@ -222,7 +222,9 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
       	send(invitedUser.id, "", "You have a pairing invitation!", false);
       }	
     })
-  });
+  }).then(function() {
+    response.success();
+  })
   response.success();
 });
 
