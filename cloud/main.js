@@ -223,6 +223,7 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
       }	
     })
   }).then(function() {
+    console.log("response success");
     response.success();
   })
   response.success();
