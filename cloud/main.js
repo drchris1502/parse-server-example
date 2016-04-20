@@ -206,10 +206,10 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
                }
              });
           }
-          response.success();
+          //response.success();
       },
       error: function(error) {
-          response.success();
+          //response.success();
       }
     });
   }).then(function() {
@@ -222,7 +222,8 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
       	console.log("Sent pariring push.");
       }	
     })
-  })
+  });
+  response.success();
 });
 
 Parse.Cloud.define("welcomeEmail", function(request, response) {
