@@ -218,7 +218,7 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
     console.log("start");
     var userQuery = new Parse.Query(request.user);
     userQuery.equalTo("email", toUserEmail);
-    console.log("Before Query.");
+    console.log(toUserEmail);
     query.find({
       success: function(invitedUser) {
       	console.log("Before Send.");
