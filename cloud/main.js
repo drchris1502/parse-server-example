@@ -43,14 +43,11 @@ Parse.Cloud.httpRequest({
     },
     body: jsonBody
   }).then(function (httpResponse) {
-    console.log("1");
     promise.resolve(httpResponse)
   },
   function (httpResponse) {
-    console.log("2");	
     promise.reject(httpResponse);
 });
-console.log("3");
 return promise;
 };
 
@@ -194,6 +191,15 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
       console.log("Uh oh, something went wrong");
     })
   }).then(function() {
+    // if the invited user has an account already, send a push
+    var userQuery = new Parse.Query(Parse.User);
+    userQuery.equalTo("email", toUserEmail);
+    userQuery.first({
+      success: function(invitedUser) {
+      	send(invitedUser.id, "", "You have a pairing invitation!", false);
+      }	
+    })
+  }).then(function() {
     // Delete any duplicate pairing objects
     var Pairing = Parse.Object.extend("Pairing");
     var query = new Parse.Query(Pairing);
@@ -209,26 +215,13 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
                }
              });
           }
-          //response.success();
+          response.success();
       },
       error: function(error) {
-          //response.success();
+          response.success();
       }
     });
-  }).then(function() {
-    // if the invited user has an account already, send a push
-    var userQuery = new Parse.Query(Parse.User);
-    userQuery.equalTo("email", toUserEmail);
-    userQuery.first({
-      success: function(invitedUser) {
-      	send(invitedUser.id, "", "You have a pairing invitation!", false);
-      }	
-    })
-  }).then(function() {
-    console.log("response success");
-    response.success();
-  })
-  response.success();
+  });
 });
 
 Parse.Cloud.define("welcomeEmail", function(request, response) {
