@@ -43,12 +43,14 @@ Parse.Cloud.httpRequest({
     },
     body: jsonBody
   }).then(function (httpResponse) {
+    console.log("1");
     promise.resolve(httpResponse)
   },
   function (httpResponse) {
+    console.log("2");	
     promise.reject(httpResponse);
 });
-
+console.log("3");
 return promise;
 };
 
