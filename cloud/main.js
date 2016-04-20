@@ -214,10 +214,9 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
       }
     });
   }).then(function() {
-    Parse.Cloud.useMasterKey();
     // if the invited user has an account already, send a push
     console.log("start");
-    var userQuery = new Parse.Query(request.user);
+    var userQuery = new Parse.Query(Parse.User);
     userQuery.equalTo("email", toUserEmail);
     console.log(toUserEmail);
     userQuery.find({
