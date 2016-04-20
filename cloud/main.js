@@ -175,6 +175,7 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
   var html3 = inviteHTML.HTMLpart3();
   var html4 = inviteHTML.HTMLpart4();
   var newPairing = request.object;
+  var toUserEmail = newPairing.get("toUserEmail");
   // First Send the email to the invited partner
   var userQuery = new Parse.Query(request.user);
   userQuery.get(newPairing.get("fromUserId")).then(function(user) {
