@@ -223,7 +223,7 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
       success: function(invitedUser) {
       	console.log("Before Send.");
       	console.log(invitedUser);
-      	console.log(invitedUser.id);
+      	console.log(invitedUser.objectId);
       	send(invitedUser.id, "", "You have a pairing invitation!", false);
       	console.log("Sent pariring push.");
       }	
