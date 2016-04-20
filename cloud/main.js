@@ -216,8 +216,10 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
     // if the invited user has an account already, send a push
     var userQuery = new Parse.Query(request.user);
     userQuery.equalTo("email", toUserEmail);
+    console.log("Before Query.");
     query.find({
       success: function(invitedUser) {
+      	console.log("Before Send.");
       	send(invitedUser.get('objectId'), "", "You have a pairing invitation!", false);
       	console.log("Sent pariring push.");
       }	
