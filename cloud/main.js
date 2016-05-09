@@ -66,12 +66,14 @@ Parse.Cloud.define("sendKiss", function(request,response) {
   var currentUsersPartnerId = currentUser.get("partnerId");
   var userQuery = new Parse.Query(request.user);
   console.log("Here 1");
+  var message = "";
+  var soundFile = "";
   userQuery.get(currentUsersPartnerId).then (function(partnerUser) {
      console.log("Here 2");
-     var soundFile = partnerUser.get("soundFile") + '.caf';
+     soundFile = partnerUser.get("soundFile") + '.caf';
      var message1 = currentUser.get("nickname");
      var message2 = " sent you a kiss!";
-     var message = message1.concat(message2);
+     message = message1.concat(message2);
      console.log("Here 3");
   }).then (function() {
     console.log("Here 4");	
