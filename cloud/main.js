@@ -61,7 +61,7 @@ Parse.Cloud.define("hello", function(request, response) {
      });
 });
 
-Parse.Cloud.define("sendKiss", function(request,respons) {
+Parse.Cloud.define("sendKiss", function(request,response) {
   var currentUser = request.user;
   var currentUsersPartnerId = currentUser.get("partnerId");
       userQuery.get(partner).then (function(currentUsersPartnerId) {
@@ -77,7 +77,7 @@ Parse.Cloud.define("sendKiss", function(request,respons) {
          console.log(error);
          response.success("Error");
        });
-  }
+  };
 });
 
 
