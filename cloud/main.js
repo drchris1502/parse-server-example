@@ -64,6 +64,7 @@ Parse.Cloud.define("hello", function(request, response) {
 Parse.Cloud.define("sendKiss", function(request,response) {
   var currentUser = request.user;
   var currentUsersPartnerId = currentUser.get("partnerId");
+      var userQuery = new Parse.Query(request.user);
       userQuery.get(partner).then (function(currentUsersPartnerId) {
        var soundFile = partnerUser.get("soundFile") + '.caf';
        var message1 = partnerUser.get("nickname");
