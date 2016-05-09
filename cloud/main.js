@@ -77,7 +77,9 @@ Parse.Cloud.define("sendKiss", function(request,response) {
          console.log(error);
          response.success("Error");
        });
-  };
+  }, function(error) {
+      response.error(error);
+  });
 });
 
 
