@@ -70,8 +70,8 @@ Parse.Cloud.define("sendKiss", function(request,response) {
        var message1 = partnerUser.get("nickname");
        var message2 = " sent you a kiss!";
        var message = message1.concat(message2);
-       console.log(soundfile);
        console.log(message);
+       console.log(soundFile);
   }).then (function() {
     send(currentUsersPartnerId, soundFile, message, false).then(
        function(object) {
