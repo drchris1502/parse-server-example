@@ -61,6 +61,25 @@ Parse.Cloud.define("hello", function(request, response) {
      });
 });
 
+Parse.Cloud.define("sendKiss", function(request,respons) {
+  var currentUser = request.user;
+  var currentUsersPartnerId = currentUser.get("partnerId");
+      userQuery.get(partner).then (function(currentUsersPartnerId) {
+       var soundFile = partnerUser.get("soundFile") + '.caf';
+       var message1 = partnerUser.get("nickname");
+       var message2 = " sent you a kiss!";
+       var message = message1.concat(message2);
+  }).then (function() {
+    send(currentUsersPartnerId, soundFile, message, false).then(
+       function(object) {
+       	response.success(message);
+       }, function(error) {
+         console.log(error);
+         response.success("Error");
+       });
+  }
+});
+
 
 Parse.Cloud.beforeSave("Messages", function(request,response) {
  
