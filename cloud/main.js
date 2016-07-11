@@ -251,7 +251,7 @@ Parse.Cloud.beforeSave("Pairing", function(request,response) {
 });
 
 Parse.Cloud.define("welcomeEmail", function(request, response) {
-  var client = require('cloud/myMailModule-1.0.0.js');
+  var client = require('/app/cloud/myMailModule-1.0.0.js');
   client.initialize('whispers-app.com', 'key-1c722948f02cedebe15f2f827c57961f');
   var email = request.params.email;
   var welcomeHTML = require('/app/cloud/welcomeHTML.js');
