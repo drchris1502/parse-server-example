@@ -12,7 +12,7 @@
     "express": "~4.11.x",
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
-    "parse-server": "git+https://2eda32442cf2fa6383aecccf49566720fbfb7cce:x-oauth-basic@github.com/drchris1502/parse-dashboard.git#master"
+    "parse-server": "git+https:/github.com/drchris1502/parse-dashboard.git#master"
   },
   "scripts": {
     "start": "node index.js"
