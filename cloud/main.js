@@ -99,7 +99,9 @@ if (request.object.get('pushed') === false) {
     userQuery.get(partner).then (function(partnerUser) {
        console.log(partnerUser);
        soundFile = partnerUser.get("soundFile") + '.caf';
-    }).then (function() {
+       }, function(error) {
+	  console.log("here");
+       }).then (function() {
        console.log('here');
        send(request.object.get('toId'), soundFile, "You have a new message!", false).then(
        function(object) {
