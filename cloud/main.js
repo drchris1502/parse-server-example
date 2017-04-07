@@ -96,8 +96,8 @@ if (request.object.get('pushed') === false) {
     var partner = request.object.get('toId');
     var userQuery = new Parse.Query(request.user);
     var soundFile = 'default'
-    console.log(partnerUser);
     userQuery.get(partner).then (function(partnerUser) {
+       console.log(partnerUser);
        soundFile = partnerUser.get("soundFile") + '.caf';
     }).then (function() {
        console.log('here');
