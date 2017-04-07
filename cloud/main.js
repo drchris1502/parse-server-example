@@ -102,7 +102,8 @@ if (request.object.get('pushed') === false) {
 	console.log('here2');
        soundFile = partnerUser.get("soundFile") + '.caf';
     }, function(error) {
-	  console.log(error);}).then (function() {
+	  console.log(error);
+    	  response.success()}).then (function() {
        console.log('here3');
        send(request.object.get('toId'), soundFile, "You have a new message!", false).then(
        function(object) {
