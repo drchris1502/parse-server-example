@@ -96,8 +96,11 @@ if (request.object.get('pushed') === false) {
     var partner = request.object.get('toId');
     var userQuery = new Parse.Query(request.user);
     var soundFile = 'default'
-    userQuery.get(partner).then (function(partnerUser) {
+    userQuery.get(partner).then (
+    function(partnerUser) {
        soundFile = partnerUser.get("soundFile") + '.caf';
+    }, function (error) {
+       console.log(error);
     }).then (function() {
        send(request.object.get('toId'), soundFile, "You have a new message!", false).then(
        function(object) {
