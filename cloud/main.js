@@ -89,7 +89,7 @@ Parse.Cloud.define("sendKiss", function(request,response) {
 
 
 Parse.Cloud.beforeSave("Messages", function(request,response) {
-console.log(request.user);
+
 if (request.object.get('pushed') === false) {
     var query = new Parse.Query(Parse.Installation);
     query.equalTo('user', request.object.get('toId'));  // push to the right user!!!
