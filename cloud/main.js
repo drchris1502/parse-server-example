@@ -94,6 +94,7 @@ if (request.object.get('pushed') === false) {
     var query = new Parse.Query(Parse.Installation);
     query.equalTo('user', request.object.get('toId'));  // push to the right user!!!
     var partner = request.object.get('toId');
+    Parse.Cloud.useMasterKey();
     var userQuery = new Parse.Query(request.user);
     var soundFile = 'default'
     userQuery.get(partner).then (
