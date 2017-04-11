@@ -94,10 +94,13 @@ if (request.object.get('pushed') === false) {
     var query = new Parse.Query(Parse.Installation);
     query.equalTo('user', request.object.get('toId'));  // push to the right user!!!
     var partner = request.object.get('toId');
-    var userQuery = new Parse.Query(Parse.User);
+    var userQuery = new Parse.Query(request.user);
     var soundFile = 'default'
-    userQuery.get(partner).then (function(partnerUser) {
+    userQuery.get(partner).then (
+    function(partnerUser) {
        soundFile = partnerUser.get("soundFile") + '.caf';
+    }, function (error) {
+       console.log(error);
     }).then (function() {
        send(request.object.get('toId'), soundFile, "You have a new message!", false).then(
        function(object) {
